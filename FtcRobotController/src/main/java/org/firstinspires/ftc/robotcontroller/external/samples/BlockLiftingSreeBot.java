@@ -31,7 +31,7 @@ public class BlockLiftingSreeBot extends LinearOpMode {
         telemetry.addData("Status", "Initialized");
         telemetry.update();
 
-        // Initialize the hardware variables. Note that the strings used here as parameters
+        // Initializes the hardware variables. Note that the strings used here as parameters
         // to 'get' must correspond to the names assigned during the robot configuration
         // step (using the FTC Robot Controller app on the phone).
         leftDrive  = hardwareMap.get(DcMotor.class, "left_drive");
