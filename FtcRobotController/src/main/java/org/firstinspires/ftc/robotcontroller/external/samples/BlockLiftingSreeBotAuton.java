@@ -10,6 +10,7 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.view.View;
 
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
@@ -19,14 +20,14 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 
-
+@Autonomous(name="AutonomousLeft")  //Names the OP mode
 public class BlockLiftingSreeBotAuton extends LinearOpMode {
     // Declare OpMode members.
     private ElapsedTime runtime = new ElapsedTime();
     private DcMotor leftDrive = null;
     private DcMotor rightDrive = null;
-    private DcMotor leftLift = null;
-    private DcMotor rightLift = null;
+    //private DcMotor leftLift = null;
+    //private DcMotor rightLift = null;
     private ColorSensor colorSensor = null;
 
     @Override
@@ -39,21 +40,21 @@ public class BlockLiftingSreeBotAuton extends LinearOpMode {
         // step (using the FTC Robot Controller app on the phone).
         leftDrive  = hardwareMap.get(DcMotor.class, "left_drive");
         rightDrive = hardwareMap.get(DcMotor.class, "right_drive");
-        leftLift = hardwareMap.get(DcMotor.class, "left_lift");
-        rightLift = hardwareMap.get(DcMotor.class, "right_lift");
+        //leftLift = hardwareMap.get(DcMotor.class, "left_lift");
+        //rightLift = hardwareMap.get(DcMotor.class, "right_lift");
         colorSensor = hardwareMap.get(ColorSensor.class, "sensor_color");
 
         // Most robots need the motor on one side to be reversed to drive forward
         // Reverse the motor that runs backwards when connected directly to the battery
         leftDrive.setDirection(DcMotor.Direction.FORWARD);
         rightDrive.setDirection(DcMotor.Direction.REVERSE);
-        leftLift.setDirection(DcMotor.Direction.FORWARD);
-        rightLift.setDirection(DcMotor.Direction.REVERSE);
+        //leftLift.setDirection(DcMotor.Direction.FORWARD);
+        //rightLift.setDirection(DcMotor.Direction.REVERSE);
 
         leftDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         rightDrive.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        leftLift.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        rightLift.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        //leftLift.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        //rightLift.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
@@ -75,17 +76,6 @@ public class BlockLiftingSreeBotAuton extends LinearOpMode {
             if (colorSensor.blue() > colorSensor.red()) {
 
             }
-
-
-
-
-
-
-
-
-
-
-
 
             // Show the elapsed game time and wheel power.
             telemetry.addData("Status", "Run Time: " + runtime.toString());
